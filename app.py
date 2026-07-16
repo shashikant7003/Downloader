@@ -240,12 +240,22 @@ def download():
         'format': quality,
         'outtmpl': 'downloads/%(title)s.%(ext)s',
         'merge_output_format': 'mp4' if quality != 'bestaudio/best' else None,
-        'update_self': True,  # Yeh har baar yt-dlp ko latest version par update karega
+        
+        # 🍪 Cookies file ka path link karna
+        'cookiefile': 'cookies.txt', 
+        
+        # Extra safety bypass options
+        'extractor_args': {
+            'youtube': {
+                'player_client': ['web_safari', 'android']
+            }
+        },
         'nocheckcertificate': True,
         'ignoreerrors': True,
         'no_warnings': True,
         'quiet': True
-    }
+        }
+        
 
     
     try:
